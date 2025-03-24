@@ -30,8 +30,6 @@ static void HandleEvents() {
         }        
     }
 
-    printf("%d\n", currentPixelType);
-
     int mouseX, mouseY;
     Uint32 mouseState = SDL_GetMouseState(&mouseX, &mouseY);
 

@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.29)
 project(sandbox)
 
 option(SANDBOX_VENDORED "Use vendored libraries" OFF)
 
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mconsole")
+# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mconsole")
 
 if(SANDBOX_VENDORED)
     add_subdirectory(vendored/sdl EXCLUDE_FROM_ALL)

@@ -36,60 +36,62 @@ void SandBox_Update() {
                             pixelBufferUpdate[y+1][x] = PIXEL_SAND;
                             break;
                         }
-                        else if (x > 0 && pixelBuffer[y][x-1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x-1] == PIXEL_EMPTY) {
+                        if (x > 0 && pixelBuffer[y][x-1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x-1] == PIXEL_EMPTY) {
                             pixelBufferUpdate[y+1][x-1] = PIXEL_SAND;
                             break;
                         }
-                        else if (x < SCREEN_WIDTH-1 && pixelBufferUpdate[y][x+1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x+1] == PIXEL_EMPTY) {
+                        if (x < SCREEN_WIDTH-1 && pixelBufferUpdate[y][x+1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x+1] == PIXEL_EMPTY) {
                             pixelBufferUpdate[y+1][x+1] = PIXEL_SAND;
                             break;
                         }
-                        else {
-                            pixelBufferUpdate[y][x] = PIXEL_SAND;
+                        if (x > 0 && pixelBufferUpdate[y+1][x-1] == PIXEL_WATER) {
+                            pixelBufferUpdate[y+1][x-1] = PIXEL_SAND;
+                            pixelBufferUpdate[y][x] = PIXEL_WATER;
                             break;
                         }
-                    }
-                    else {
+                        if (x < SCREEN_WIDTH-1 && pixelBufferUpdate[y+1][x+1] == PIXEL_WATER) {
+                            pixelBufferUpdate[y+1][x+1] = PIXEL_SAND;
+                            pixelBufferUpdate[y][x] = PIXEL_WATER;
+                            break;
+                        }
                         pixelBufferUpdate[y][x] = PIXEL_SAND;
                         break;
                     }
+                    pixelBufferUpdate[y][x] = PIXEL_SAND;
+                    break;
 
                 case PIXEL_WATER:
+                    if (pixelBuffer[y-1][x] == PIXEL_SAND) {
+                        pixelBuffer[y-1][x] = PIXEL_WATER;
+                        pixelBufferUpdate[y][x] = PIXEL_SAND;
+                        break;
+                    }
                     if (y < SCREEN_HEIGHT-1) {
                         if (pixelBufferUpdate[y+1][x] == PIXEL_EMPTY) {
                             pixelBufferUpdate[y+1][x] = PIXEL_WATER;
                             break;
                         }
-                        else if (pixelBuffer[y-1][x] == PIXEL_SAND) {
-                            pixelBuffer[y-1][x] = PIXEL_WATER;
-                            pixelBufferUpdate[y][x] = PIXEL_SAND;
-                            break;
-                        }
-                        else if (x > 0 && pixelBuffer[y][x-1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x-1] == PIXEL_EMPTY) {
+                        if (x > 0 && pixelBuffer[y][x-1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x-1] == PIXEL_EMPTY) {
                             pixelBufferUpdate[y+1][x-1] = PIXEL_WATER;
                             break;
                         }
-                        else if (x < SCREEN_WIDTH-1 && pixelBufferUpdate[y][x+1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x+1] == PIXEL_EMPTY) {
+                        if (x < SCREEN_WIDTH-1 && pixelBufferUpdate[y][x+1] == PIXEL_EMPTY && pixelBufferUpdate[y+1][x+1] == PIXEL_EMPTY) {
                             pixelBufferUpdate[y+1][x+1] = PIXEL_WATER;
                             break;
                         }
-                        else if (x > 0 && pixelBuffer[y][x-1] == PIXEL_EMPTY) {
+                        if (x > 0 && pixelBuffer[y][x-1] == PIXEL_EMPTY) {
                             pixelBufferUpdate[y][x-1] = PIXEL_WATER;
                             break;
                         }
-                        else if (x < SCREEN_WIDTH-1 && pixelBufferUpdate[y][x+1] == PIXEL_EMPTY) {
+                        if (x < SCREEN_WIDTH-1 && pixelBufferUpdate[y][x+1] == PIXEL_EMPTY) {
                             pixelBufferUpdate[y][x+1] = PIXEL_WATER;
                             break;
                         }
-                        else {
-                            pixelBufferUpdate[y][x] = PIXEL_WATER;
-                            break;
-                        }
-                    }
-                    else {
                         pixelBufferUpdate[y][x] = PIXEL_WATER;
                         break;
                     }
+                    pixelBufferUpdate[y][x] = PIXEL_WATER;
+                    break;
                 
                 case PIXEL_STONE:
                     pixelBufferUpdate[y][x] = PIXEL_STONE;
