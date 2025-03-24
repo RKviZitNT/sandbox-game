@@ -26,6 +26,9 @@ static void HandleEvents() {
                 case SDLK_3:
                     currentPixelType = PIXEL_WATER;
                     break;
+                case SDLK_DELETE:
+                    SandBox_Clear();
+                    break;
             }
         }        
     }

@@ -25,5 +25,6 @@ void SandBox_Init();
 void SandBox_Update();
 bool SandBox_DrawingPixels(Pixel *pixel);
 void SandBox_CreatePixel(int pixelType, int xpos, int ypos);
+void SandBox_Clear();
 
 #endif

@@ -160,3 +160,11 @@ void SandBox_CreatePixel(int pixelType, int xpos, int ypos) {
         }
     }
 }
+
+void SandBox_Clear() {
+    for (size_t y = 0; y < SCREEN_HEIGHT; y++) {
+        for (size_t x = 0; x < SCREEN_WIDTH; x++) {
+            pixelBuffer[y][x] = PIXEL_EMPTY;
+        }
+    }
+}

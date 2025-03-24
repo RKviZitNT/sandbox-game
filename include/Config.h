@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define PIXEL 20
+#define PIXEL 10
 
 #define SCREEN_WIDTH 600/PIXEL
 #define SCREEN_HEIGHT 400/PIXEL
