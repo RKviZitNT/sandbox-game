@@ -151,10 +151,12 @@ void SandBox_CreatePixel(int pixelType, int xpos, int ypos) {
     int x = xpos / PIXEL;
     int y = ypos / PIXEL;
 
-    if (pixelType == PIXEL_EMPTY) {
-        pixelBuffer[y][x] = pixelType;
-    }
-    else if (pixelBuffer[y][x] == PIXEL_EMPTY) {
-        pixelBufferUpdate[y][x] = pixelType;
+    if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT) {
+        if (pixelType == PIXEL_EMPTY) {
+            pixelBuffer[y][x] = pixelType;
+        }
+        else if (pixelBuffer[y][x] == PIXEL_EMPTY) {
+            pixelBufferUpdate[y][x] = pixelType;
+        }
     }
 }
